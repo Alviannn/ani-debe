@@ -1,24 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AniDebe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eTE-Hk-76m">
+                                <rect key="frame" x="15" y="118" width="270" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DzN-XW-fjt">
+                                <rect key="frame" x="300" y="116" width="78" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Search"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="AniDeBe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKT-86-ThS">
+                                <rect key="frame" x="143" y="74" width="106" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9RH-8w-dvg">
+                                <rect key="frame" x="0.0" y="191" width="393" height="627"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="143" id="Xae-f1-uJb" customClass="AnimeViewCell" customModule="AniDebe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="143"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xae-f1-uJb" id="eHC-Dw-JL5">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="143"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0C9-qv-QpO">
+                                                    <rect key="frame" x="20" y="11" width="120" height="121"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="121" id="cvB-3u-RTT"/>
+                                                        <constraint firstAttribute="width" constant="120" id="fGa-J1-ymg"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anime Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGX-U4-be7">
+                                                    <rect key="frame" x="148" y="11" width="98" height="24"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : X/10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYD-Ma-XLq">
+                                                    <rect key="frame" x="148" y="43" width="105" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tGX-U4-be7" firstAttribute="leading" secondItem="0C9-qv-QpO" secondAttribute="trailing" constant="8" symbolic="YES" id="5p4-wk-rNw"/>
+                                                <constraint firstItem="0C9-qv-QpO" firstAttribute="leading" secondItem="eHC-Dw-JL5" secondAttribute="leadingMargin" id="AiN-6r-a4i"/>
+                                                <constraint firstItem="qYD-Ma-XLq" firstAttribute="leading" secondItem="0C9-qv-QpO" secondAttribute="trailing" constant="8" symbolic="YES" id="FfV-Km-kSf"/>
+                                                <constraint firstItem="0C9-qv-QpO" firstAttribute="bottom" secondItem="eHC-Dw-JL5" secondAttribute="bottomMargin" id="HfK-lo-Vke"/>
+                                                <constraint firstItem="tGX-U4-be7" firstAttribute="top" secondItem="eHC-Dw-JL5" secondAttribute="topMargin" id="PQu-MO-c0p"/>
+                                                <constraint firstItem="qYD-Ma-XLq" firstAttribute="top" secondItem="tGX-U4-be7" secondAttribute="bottom" constant="8" symbolic="YES" id="W5J-en-6m7"/>
+                                                <constraint firstItem="0C9-qv-QpO" firstAttribute="top" secondItem="eHC-Dw-JL5" secondAttribute="topMargin" id="k6Z-y1-vAR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="AnimeImage" destination="0C9-qv-QpO" id="ZNE-ux-5n5"/>
+                                            <outlet property="ScoreText" destination="qYD-Ma-XLq" id="cuZ-5G-4Px"/>
+                                            <outlet property="TitleText" destination="tGX-U4-be7" id="Qi1-Wr-1Hs"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1A-7D-Xqn">
+                                <rect key="frame" x="15" y="162" width="119" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9RH-8w-dvg" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="3X0-Vc-Es9"/>
+                            <constraint firstItem="9RH-8w-dvg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CYU-Et-Qac"/>
+                            <constraint firstItem="DzN-XW-fjt" firstAttribute="leading" secondItem="eTE-Hk-76m" secondAttribute="trailing" constant="15" id="PgP-H7-XJV"/>
+                            <constraint firstItem="DzN-XW-fjt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="57" id="TLv-zM-ezE"/>
+                            <constraint firstItem="eTE-Hk-76m" firstAttribute="leading" secondItem="p1A-7D-Xqn" secondAttribute="leading" id="c5a-kz-AGO"/>
+                            <constraint firstItem="FKT-86-ThS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="143" id="cgc-eL-Tu5"/>
+                            <constraint firstItem="FKT-86-ThS" firstAttribute="centerX" secondItem="9RH-8w-dvg" secondAttribute="centerX" id="fIY-G0-FaZ"/>
+                            <constraint firstAttribute="trailing" secondItem="9RH-8w-dvg" secondAttribute="trailing" id="ggR-fx-OPp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DzN-XW-fjt" secondAttribute="trailing" constant="15" id="lzy-3V-abb"/>
+                            <constraint firstItem="FKT-86-ThS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="nGB-tC-4ix"/>
+                            <constraint firstItem="eTE-Hk-76m" firstAttribute="top" secondItem="FKT-86-ThS" secondAttribute="bottom" constant="10" id="nWC-QM-QB0"/>
+                            <constraint firstItem="p1A-7D-Xqn" firstAttribute="top" secondItem="eTE-Hk-76m" secondAttribute="bottom" constant="10" id="nx5-lE-B2s"/>
+                            <constraint firstItem="9RH-8w-dvg" firstAttribute="top" secondItem="p1A-7D-Xqn" secondAttribute="bottom" constant="8" symbolic="YES" id="qlg-ct-6Vf"/>
+                            <constraint firstItem="eTE-Hk-76m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="xcS-AO-QVk"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="AnimeTv" destination="9RH-8w-dvg" id="JJD-wV-Khc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.824427480916029" y="-27.464788732394368"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
