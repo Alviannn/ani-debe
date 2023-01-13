@@ -134,21 +134,77 @@
             </objects>
             <point key="canvasLocation" x="32.824427480916029" y="-27.464788732394368"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="Pkj-ih-FwP">
             <objects>
-                <viewController id="TTp-J5-qaz" sceneMemberID="viewController">
+                <viewController id="TTp-J5-qaz" customClass="DetailViewController" customModule="AniDebe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cmd-oa-S5O">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6kW-la-t9z">
+                                <rect key="frame" x="15" y="74" width="140" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="90l-pD-mZP"/>
+                                    <constraint firstAttribute="width" constant="140" id="vfH-jq-xWc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anime Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuC-EE-wYO">
+                                <rect key="frame" x="170" y="74" width="208" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : X/10.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVS-gL-taL">
+                                <rect key="frame" x="170" y="115" width="208" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2S-vL-FzN">
+                                <rect key="frame" x="170" y="147" width="208" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Episode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQZ-fk-xpp">
+                                <rect key="frame" x="170" y="193" width="208" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="380-Mh-sLF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6kW-la-t9z" firstAttribute="leading" secondItem="380-Mh-sLF" secondAttribute="leading" constant="15" id="6cU-oE-5c7"/>
+                            <constraint firstItem="RuC-EE-wYO" firstAttribute="leading" secondItem="6kW-la-t9z" secondAttribute="trailing" constant="15" id="CGU-IP-3uA"/>
+                            <constraint firstItem="DQZ-fk-xpp" firstAttribute="leading" secondItem="6kW-la-t9z" secondAttribute="trailing" constant="15" id="Csv-f2-Hdw"/>
+                            <constraint firstItem="380-Mh-sLF" firstAttribute="trailing" secondItem="B2S-vL-FzN" secondAttribute="trailing" constant="15" id="Ogm-m0-SS1"/>
+                            <constraint firstItem="DQZ-fk-xpp" firstAttribute="top" secondItem="B2S-vL-FzN" secondAttribute="bottom" constant="25" id="S8a-70-BkM"/>
+                            <constraint firstItem="cVS-gL-taL" firstAttribute="leading" secondItem="6kW-la-t9z" secondAttribute="trailing" constant="15" id="WUS-hW-SE2"/>
+                            <constraint firstItem="380-Mh-sLF" firstAttribute="trailing" secondItem="cVS-gL-taL" secondAttribute="trailing" constant="15" id="Zeq-jm-1l4"/>
+                            <constraint firstItem="cVS-gL-taL" firstAttribute="top" secondItem="RuC-EE-wYO" secondAttribute="bottom" constant="7.3300000000000001" id="cQ7-Ce-A2p"/>
+                            <constraint firstItem="380-Mh-sLF" firstAttribute="trailing" secondItem="DQZ-fk-xpp" secondAttribute="trailing" constant="15" id="cvO-Xq-oP0"/>
+                            <constraint firstItem="380-Mh-sLF" firstAttribute="trailing" secondItem="RuC-EE-wYO" secondAttribute="trailing" constant="15" id="fFY-4S-4JV"/>
+                            <constraint firstItem="B2S-vL-FzN" firstAttribute="top" secondItem="cVS-gL-taL" secondAttribute="bottom" constant="8" symbolic="YES" id="htX-Yg-CzQ"/>
+                            <constraint firstItem="RuC-EE-wYO" firstAttribute="top" secondItem="380-Mh-sLF" secondAttribute="top" constant="15" id="rbk-TC-wtt"/>
+                            <constraint firstItem="6kW-la-t9z" firstAttribute="top" secondItem="380-Mh-sLF" secondAttribute="top" constant="15" id="viF-vf-aw3"/>
+                            <constraint firstItem="B2S-vL-FzN" firstAttribute="leading" secondItem="6kW-la-t9z" secondAttribute="trailing" constant="15" id="zKL-Uq-IoG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JIL-In-p68"/>
+                    <connections>
+                        <outlet property="AnimeImage" destination="6kW-la-t9z" id="sLY-eW-hRg"/>
+                        <outlet property="EpisodeText" destination="DQZ-fk-xpp" id="Vra-tX-O2U"/>
+                        <outlet property="ScoreText" destination="cVS-gL-taL" id="CxS-ZJ-IC8"/>
+                        <outlet property="SeasonText" destination="B2S-vL-FzN" id="89r-1f-kSm"/>
+                        <outlet property="TitleText" destination="RuC-EE-wYO" id="A9m-VG-ALF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndA-AP-V0e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="770" y="-27"/>
+            <point key="canvasLocation" x="768.70229007633588" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>

@@ -7,17 +7,18 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var AnimeTv: UITableView!
     @IBOutlet weak var SearchText: UITextField!
     var search: Bool = false
     var animeList = [Anime]()
     var animeListSearch = [Anime]()
+    var tableSelected: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        AnimeTv.delegate = self
+        AnimeTv.delegate = self
         AnimeTv.dataSource = self
         
         let baseUrl = "https://api.jikan.moe/v4"
@@ -82,6 +83,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             cell.imageView!.image = image
         })
         
+        
 //        DispatchQueue.main.async {
 //            let url = URL(string: model.images.jpg.imageUrl)
 //            let data = try? Data(contentsOf: url!)
@@ -97,6 +99,12 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableSelected = indexPath.row
+        print("Masuk sini gan")
+        performSegue(withIdentifier: "toDetail", sender: self)
     }
     
     @IBAction func SearchPressed(_ sender: Any) {
@@ -119,6 +127,13 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dest = segue.destination as! 
+        if(segue.identifier == "toDetail"){
+            let dest = segue.destination as! DetailViewController
+            if(search){
+                dest.anime = animeListSearch[tableSelected!]
+            }else{
+                dest.anime = animeList[tableSelected!]
+            }
+        }
     }
 }
