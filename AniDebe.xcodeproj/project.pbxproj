@@ -23,6 +23,7 @@
 		054BF8A2296E7DFC008BDC02 /* BaseJikanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BF8A1296E7DFC008BDC02 /* BaseJikanService.swift */; };
 		054BF8A4296E7E58008BDC02 /* SeasonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BF8A3296E7E58008BDC02 /* SeasonService.swift */; };
 		054BF8A8296E7FDD008BDC02 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054BF8A7296E7FDD008BDC02 /* Response.swift */; };
+		0563DA472971105B0094EB77 /* UIImageView+ShowFromUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0563DA462971105B0094EB77 /* UIImageView+ShowFromUrl.swift */; };
 		056A92A8296FDB2C000B2F14 /* AnimeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A92A7296FDB2C000B2F14 /* AnimeViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		054BF8A1296E7DFC008BDC02 /* BaseJikanService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseJikanService.swift; sourceTree = "<group>"; };
 		054BF8A3296E7E58008BDC02 /* SeasonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonService.swift; sourceTree = "<group>"; };
 		054BF8A7296E7FDD008BDC02 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		0563DA462971105B0094EB77 /* UIImageView+ShowFromUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImageView+ShowFromUrl.swift"; path = "../../../../UIImageView+ShowFromUrl.swift"; sourceTree = "<group>"; };
 		056A92A7296FDB2C000B2F14 /* AnimeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 		054BF87B296E77C8008BDC02 /* AniDebe */ = {
 			isa = PBXGroup;
 			children = (
+				0563DA4529710FE40094EB77 /* Extensions */,
 				054BF8A0296E7DE3008BDC02 /* Services */,
 				054BF895296E784E008BDC02 /* Models */,
 				054BF87C296E77C8008BDC02 /* AppDelegate.swift */,
@@ -114,6 +117,14 @@
 				054BF8A3296E7E58008BDC02 /* SeasonService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		0563DA4529710FE40094EB77 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0563DA462971105B0094EB77 /* UIImageView+ShowFromUrl.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 				054BF87D296E77C8008BDC02 /* AppDelegate.swift in Sources */,
 				054BF89B296E79AC008BDC02 /* Trailer.swift in Sources */,
 				054BF87F296E77C8008BDC02 /* SceneDelegate.swift in Sources */,
+				0563DA472971105B0094EB77 /* UIImageView+ShowFromUrl.swift in Sources */,
 				054BF89D296E7A03008BDC02 /* Genre.swift in Sources */,
 				056A92A8296FDB2C000B2F14 /* AnimeViewCell.swift in Sources */,
 				054BF8A2296E7DFC008BDC02 /* BaseJikanService.swift in Sources */,
@@ -350,7 +362,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AniDebe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -378,7 +390,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AniDebe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
