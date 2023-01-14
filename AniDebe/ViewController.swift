@@ -7,19 +7,22 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    @IBOutlet weak var AnimeTv: UITableView!
-    @IBOutlet weak var SearchText: UITextField!
+    @IBOutlet var AnimeTv: UITableView!
+    @IBOutlet var SearchBar: UISearchBar!
+    
     var search: Bool = false
     var animeList = [Anime]()
     var animeListSearch = [Anime]()
-    var tableSelected: IndexPath?
+    var tableSelected: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         AnimeTv.delegate = self
         AnimeTv.dataSource = self
+        SearchBar.delegate = self
         
         let baseUrl = "https://api.jikan.moe/v4"
         let sessionService = SessionService(baseUrl: "\(baseUrl)/seasons")
@@ -31,31 +34,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
             let animeList = data!.data
+            var count = 0
+            
             DispatchQueue.main.async {
+                print("Masuk dispatch")
                 self.animeList = animeList
+                self.animeListSearch = animeList
+//                print("AnimeList global : \(self.animeList.count)")
+//                print("TESTTTT \(self.animeList[0])")
                 self.AnimeTv.reloadData()
             }
+            
+            for anime in animeList {
+                count += 1
+                print("\(count). \(anime.title) - \(anime.score ?? 0.00)")
+            }
         })
-        
-        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (search){
-            return animeListSearch.count
-        }
-        return animeList.count
+        return animeListSearch.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var model: Anime!
         let row = indexPath.row
-        
-        if(search){
-            model = animeListSearch[row]
-        }else{
-            model = animeList[row]
-        }
+        let model = animeListSearch[row]
         
         let imageUrl = model.images.jpg.imageUrl
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AnimeViewCell
@@ -90,41 +93,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableSelected = indexPath
+        tableSelected = indexPath.row
+        print("Masuk sini gan")
         performSegue(withIdentifier: "toDetail", sender: self)
     }
     
-    @IBAction func SearchPressed(_ sender: Any) {
-        let text: String = SearchText.text!
-        animeListSearch.removeAll()
-        
-        if(!text.isEmpty){
-            for anime in animeList{
-                if(anime.title.contains(text)){
-                    animeListSearch.append(anime)
-                }
-            }
-            
-            search = true
-        }else{
-            search = false
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        animeListSearch = searchText.isEmpty ? animeList : animeList.filter { (item: Anime) -> Bool in
+            return item.title.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         
-        self.AnimeTv.reloadData()
+        AnimeTv.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toDetail"){
             let dest = segue.destination as! DetailViewController
-            let row = tableSelected!.row
-
-            dest.coverImage = AnimeTv.cellForRow(at: tableSelected!)!.imageView!.image
-    
-            if(search){
-                dest.anime = animeListSearch[row]
-            }else{
-                dest.anime = animeList[row]
-            }
+            dest.anime = animeListSearch[tableSelected!]
         }
     }
 }
