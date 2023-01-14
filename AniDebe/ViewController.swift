@@ -17,6 +17,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var animeListSearch = [Anime]()
     var tableSelected: IndexPath?
     
+    static var fav = Favorite(favoriteId: [])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var SynopsisText: UILabel!
     var anime: Anime!
     var coverImage: UIImage!
+    var animeId: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +32,17 @@ class DetailViewController: UIViewController {
         
         EpisodeText.text = "Total Episode : \(episodeString)"
         SynopsisText.text = anime.synopsis
+        
+        animeId = anime.malId
     }
     
-
+    @IBAction func FavoritePressed(_ sender: Any) {
+        ViewController.fav.favoriteId.append(animeId)
+        print("Counter : \(ViewController.fav.favoriteId.count)")
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
