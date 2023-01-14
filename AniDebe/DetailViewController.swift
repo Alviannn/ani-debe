@@ -14,27 +14,21 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ScoreText: UILabel!
     @IBOutlet weak var SeasonText: UILabel!
     @IBOutlet weak var EpisodeText: UILabel!
+    
     var anime: Anime!
+    var coverImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let imageUrl = anime.images.jpg.imageUrl
-        
-        loadImageFromUrl(rawUrl: imageUrl, onComplete: { image, err in
-            if err != nil {
-                // todo: do something when error
-                return
-            }
-            
-            self.AnimeImage!.image = image
-        })
-        
+        AnimeImage.image = coverImage
         TitleText.text = anime.title
         ScoreText.text = "Score : \(anime.score ?? 0)/10.0"
+        
         let episode = anime.episodes ?? 0
         let episodeString = episode != 0 ? "\(episode)" : "??"
+        
         EpisodeText.text = "Total Episode : \(episodeString)"
     }
     
