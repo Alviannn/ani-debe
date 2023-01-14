@@ -321,6 +321,7 @@
                         <outlet property="FavoriteButton" destination="hb2-JY-G4r" id="b9J-mI-Mdt"/>
                         <outlet property="ScoreText" destination="cVS-gL-taL" id="CxS-ZJ-IC8"/>
                         <outlet property="SeasonText" destination="B2S-vL-FzN" id="89r-1f-kSm"/>
+                        <outlet property="SynopsisText" destination="Y39-XY-qkM" id="D3Q-SZ-poV"/>
                         <outlet property="TitleText" destination="RuC-EE-wYO" id="A9m-VG-ALF"/>
                         <segue destination="hP3-iu-SaQ" kind="unwind" identifier="toHome" unwindAction="unwindToHome:" id="p2k-vg-jIA"/>
                     </connections>
