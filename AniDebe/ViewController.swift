@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var search: Bool = false
     var animeList = [Anime]()
     var animeListSearch = [Anime]()
-    var tableSelected: Int?
+    var tableSelected: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +93,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableSelected = indexPath.row
+        tableSelected = indexPath
         print("Masuk sini gan")
         performSegue(withIdentifier: "toDetail", sender: self)
     }
@@ -109,7 +109,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toDetail"){
             let dest = segue.destination as! DetailViewController
-            dest.anime = animeListSearch[tableSelected!]
+            dest.coverImage = AnimeTv.cellForRow(at: tableSelected!)!.imageView!.image
+            dest.anime = animeListSearch[tableSelected!.row]
         }
     }
 }
