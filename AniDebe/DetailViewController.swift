@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ScoreText: UILabel!
     @IBOutlet weak var SeasonText: UILabel!
     @IBOutlet weak var EpisodeText: UILabel!
+    @IBOutlet weak var SynopsisText: UILabel!
     var anime: Anime!
     
     override func viewDidLoad() {
@@ -33,9 +34,11 @@ class DetailViewController: UIViewController {
         
         TitleText.text = anime.title
         ScoreText.text = "Score : \(anime.score ?? 0)/10.0"
+        SeasonText.text = "\(anime.season) Season"
         let episode = anime.episodes ?? 0
         let episodeString = episode != 0 ? "\(episode)" : "??"
         EpisodeText.text = "Total Episode : \(episodeString)"
+        SynopsisText.text = anime.synopsis
     }
     
 
