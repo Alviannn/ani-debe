@@ -10,39 +10,35 @@ import UIKit
 class FavoriteViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var FavoriteAnimeTv: UITableView!
-    var anime = [Anime]()
-    var coverImage: UIImage!
+    var favoriteList = [Favorite]()
+    
+    let animeService = AnimeService(baseUrl: "https://api.jikan.moe/v4/anime")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         FavoriteAnimeTv.dataSource = self
+        
+        let favRepo = FavoriteRepository()
+        favoriteList = favRepo.getAll()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print("Counterssss : \(ViewController.fav.favoriteId.count)")
-        
-        return ViewController.fav.favoriteId.count
+        return favoriteList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let baseUrl = "https://api.jikan.moe/v4"
-        let animeService = AnimeService(baseUrl: "\(baseUrl)/anime")
-        
-        let id = ViewController.fav.favoriteId[indexPath.row]
+        let id = favoriteList[indexPath.row].malId
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteViewCell
         
-        animeService.getId(id: id, onComplete: { data, err in
+        animeService.getId(id: Int(id), onComplete: { res, err in
             if let err = err{
                 print(err)
                 return
             }
             
-            let anime = data!.data
-            
+            let anime = res!.data
             let imageUrl = anime.images.jpg.imageUrl
             
             URLSession.shared.loadUIImage(rawUrl: imageUrl, onComplete: { data, err in
@@ -61,6 +57,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource {
                     let episodeString = (episode != 0) ? "\(episode)" : "??"
 
                     cell.DescriptionTxt.text = "Total Episode: \(episodeString)\n\(anime.synopsis)"
+
                     // force the cell to load the image
                     //
                     // otherwise we need the user to start scrolling the app

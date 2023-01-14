@@ -16,7 +16,7 @@ extension Favorite {
         return NSFetchRequest<Favorite>(entityName: "Favorite")
     }
 
-    @NSManaged public var malId: Int32
+    @NSManaged public var malId: Int64
 
 }
 

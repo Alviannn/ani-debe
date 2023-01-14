@@ -37,11 +37,13 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func FavoritePressed(_ sender: Any) {
-        ViewController.fav.favoriteId.append(animeId)
-        print("Counter : \(ViewController.fav.favoriteId.count)")
+        let favRepo = FavoriteRepository()
+        
+        let favorite = favRepo.create()
+        favorite.malId = Int64(animeId)
+
+        favRepo.saveContext()
     }
-    
-    
     
     /*
     // MARK: - Navigation

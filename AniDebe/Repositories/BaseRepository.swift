@@ -25,18 +25,33 @@ class BaseRepository<T: NSManagedObject> {
         return T(context: context)
     }
     
-    func save(entity: T) throws {
-        try context.save()
+    func saveContext() {
+        do {
+            try context.save()
+        } catch {
+            print("Failed to save an entity: \(error)")
+        }
     }
     
-    func getAll() throws -> [T] {
+    func getAll() -> [T] {
         let request = T.fetchRequest()
-        return try context.fetch(request) as! [T]
+        
+        do {
+            return try context.fetch(request) as! [T]
+        } catch {
+            print("Failed to fetch entities: \(error)")
+        }
+        
+        return []
     }
     
-    func delete(entity: T) throws {
+    func delete(entity: T) {
         context.delete(entity)
-        try context.save()
+        do {
+            try context.save()
+        } catch {
+            print("Failed to delete entity: \(error)")
+        }
     }
     
 }

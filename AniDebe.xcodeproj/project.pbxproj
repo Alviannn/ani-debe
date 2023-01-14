@@ -31,7 +31,6 @@
 		0589B43D2972919900BB2FE9 /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0589B43B2972919900BB2FE9 /* Favorite+CoreDataProperties.swift */; };
 		05C11D9F29726AEB00997D99 /* URLSession+LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C11D9E29726AEB00997D99 /* URLSession+LoadImage.swift */; };
 		05D9F40A297286480039E008 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9F409297286480039E008 /* FavoriteViewController.swift */; };
-		05D9F40C297287EB0039E008 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9F40B297287EB0039E008 /* Favorite.swift */; };
 		05D9F40E29728B700039E008 /* AnimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9F40D29728B700039E008 /* AnimeService.swift */; };
 		05D9F41029728E8C0039E008 /* FavoriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D9F40F29728E8C0039E008 /* FavoriteViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -63,7 +62,6 @@
 		0589B43B2972919900BB2FE9 /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		05C11D9E29726AEB00997D99 /* URLSession+LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+LoadImage.swift"; sourceTree = "<group>"; };
 		05D9F409297286480039E008 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		05D9F40B297287EB0039E008 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		05D9F40D29728B700039E008 /* AnimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeService.swift; sourceTree = "<group>"; };
 		05D9F40F29728E8C0039E008 /* FavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,7 +127,6 @@
 				054BF89C296E7A03008BDC02 /* Genre.swift */,
 				054BF89E296E7B73008BDC02 /* Aired.swift */,
 				054BF8A7296E7FDD008BDC02 /* Response.swift */,
-				05D9F40B297287EB0039E008 /* Favorite.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,7 +256,6 @@
 				05C11D9F29726AEB00997D99 /* URLSession+LoadImage.swift in Sources */,
 				0589B43729728FF000BB2FE9 /* BaseRepository.swift in Sources */,
 				054BF89D296E7A03008BDC02 /* Genre.swift in Sources */,
-				05D9F40C297287EB0039E008 /* Favorite.swift in Sources */,
 				0589B43C2972919900BB2FE9 /* Favorite+CoreDataClass.swift in Sources */,
 				056A92A8296FDB2C000B2F14 /* AnimeViewCell.swift in Sources */,
 				055009B229713DD700F5B2B0 /* DetailViewController.swift in Sources */,
