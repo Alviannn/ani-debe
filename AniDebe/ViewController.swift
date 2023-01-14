@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var search: Bool = false
     var animeList = [Anime]()
     var animeListSearch = [Anime]()
-    var tableSelected: Int?
+    var tableSelected: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,26 +31,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
             let animeList = data!.data
-            var count = 0
-            
-            
-            
             DispatchQueue.main.async {
-                print("Masuk dispatch")
                 self.animeList = animeList
-                print("AnimeList global : \(self.animeList.count)")
-                print("TESTTTT \(self.animeList[0])")
                 self.AnimeTv.reloadData()
             }
-            
-            for anime in animeList {
-                count += 1
-                print("\(count). \(anime.title) - \(anime.score ?? 0.00)")
-                
-                
-            }
-            
-            //push lagi, tadi salah akun
         })
         
         // Do any additional setup after loading the view.
@@ -64,48 +48,49 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         var model: Anime!
+        let row = indexPath.row
         
         if(search){
-            model = animeListSearch[indexPath.row]
+            model = animeListSearch[row]
         }else{
-            model = animeList[indexPath.row]
+            model = animeList[row]
         }
         
         let imageUrl = model.images.jpg.imageUrl
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AnimeViewCell
         
-        loadImageFromUrl(rawUrl: imageUrl, onComplete: { image, err in
+        URLSession.shared.loadUIImage(rawUrl: imageUrl, onComplete: { data, err in
             if err != nil {
                 // todo: do something when error
                 return
             }
             
-            cell.imageView!.image = image
-        })
-        
-        
-//        DispatchQueue.main.async {
-//            let url = URL(string: model.images.jpg.imageUrl)
-//            let data = try? Data(contentsOf: url!)
-//            cell.AnimeImage.image = UIImage(data: data!)
-//        }
-        cell.TitleText.text = model.title
-        cell.ScoreText.text = "Score : \(model.score ?? 0)/10.0"
-        let episode = model.episodes ?? 0
-        let episodeString = episode != 0 ? "\(episode)" : "??"
-        cell.DescriptionText.text = "Total Episode: \(episodeString)\n\(model.synopsis)"
-        
-        
+            DispatchQueue.main.async {
+                cell.imageView!.image = UIImage(data: data!)
+                
+                cell.TitleText.text = model.title
+                cell.ScoreText.text = "Score : \(model.score ?? 0)/10.0"
+                
+                let episode = model.episodes ?? 0
+                let episodeString = (episode != 0) ? "\(episode)" : "??"
+
+                cell.DescriptionText.text = "Total Episode: \(episodeString)\n\(model.synopsis)"
+                
+                // force the cell to load the image
+                //
+                // otherwise we need the user to start scrolling the app
+                // in order to load the images.
+                cell.setNeedsLayout()
+            }
+        }).resume()
         
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableSelected = indexPath.row
-        print("Masuk sini gan")
+        tableSelected = indexPath
         performSegue(withIdentifier: "toDetail", sender: self)
     }
     
@@ -131,10 +116,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "toDetail"){
             let dest = segue.destination as! DetailViewController
+            let row = tableSelected!.row
+
+            dest.coverImage = AnimeTv.cellForRow(at: tableSelected!)!.imageView!.image
+    
             if(search){
-                dest.anime = animeListSearch[tableSelected!]
+                dest.anime = animeListSearch[row]
             }else{
-                dest.anime = animeList[tableSelected!]
+                dest.anime = animeList[row]
             }
         }
     }
