@@ -15,7 +15,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ScoreText: UILabel!
     @IBOutlet weak var SeasonText: UILabel!
     @IBOutlet weak var EpisodeText: UILabel!
-    @IBOutlet weak var SynopsisText: UILabel!
+    @IBOutlet weak var SynopsisText: UITextView!
+    
     var anime: Anime!
     var coverImage: UIImage!
     var animeId: Int!
@@ -57,16 +58,7 @@ class DetailViewController: UIViewController {
 
             favRepo.saveContext()
         }
+        
+        performSegue(withIdentifier: "toHome", sender: self)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

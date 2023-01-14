@@ -13,6 +13,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource {
     var favoriteList = [Favorite]()
     
     let animeService = AnimeService(baseUrl: "https://api.jikan.moe/v4/anime")
+    let favRepo = FavoriteRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,17 @@ class FavoriteViewController: UIViewController, UITableViewDataSource {
         
         FavoriteAnimeTv.dataSource = self
         
-        let favRepo = FavoriteRepository()
         favoriteList = favRepo.getAll()
+        self.refreshFavorites()
+    }
+    
+    func refreshFavorites() {
+        favoriteList = favRepo.getAll()
+        FavoriteAnimeTv.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        refreshFavorites()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,16 +79,4 @@ class FavoriteViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

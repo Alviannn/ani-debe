@@ -71,6 +71,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
             DispatchQueue.main.async {
                 cell.imageView!.image = UIImage(data: data!)
+                cell.imageView!.layer.masksToBounds = true
                 
                 cell.TitleText.text = model.title
                 cell.ScoreText.text = "Score : \(model.score ?? 0)/10.0"
@@ -88,9 +89,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }).resume()
         
+        cell.imageView!.contentMode = .scaleAspectFill
+        
         return cell
         
     }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableSelected = indexPath
@@ -113,4 +117,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             dest.anime = animeListSearch[tableSelected!.row]
         }
     }
+    
+    @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {}
 }
