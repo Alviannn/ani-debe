@@ -9,6 +9,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var FavoriteButton: UIButton!
     @IBOutlet weak var AnimeImage: UIImageView!
     @IBOutlet weak var TitleText: UILabel!
     @IBOutlet weak var ScoreText: UILabel!
@@ -18,11 +19,16 @@ class DetailViewController: UIViewController {
     var anime: Anime!
     var coverImage: UIImage!
     var animeId: Int!
+    var check: Bool = false
+    
+    let favRepo = FavoriteRepository()
+    var currentFavorite: Favorite?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+     
         AnimeImage.image = coverImage
         TitleText.text = anime.title
         ScoreText.text = "Score : \(anime.score ?? 0)/10.0"
@@ -34,15 +40,23 @@ class DetailViewController: UIViewController {
         SynopsisText.text = anime.synopsis
         
         animeId = anime.malId
+        
+        currentFavorite = favRepo.findByMalId(id: anime.malId)
+        if currentFavorite != nil {
+            FavoriteButton.setTitle("Unfavorite", for: .normal)
+            check = true
+        }
     }
     
     @IBAction func FavoritePressed(_ sender: Any) {
-        let favRepo = FavoriteRepository()
-        
-        let favorite = favRepo.create()
-        favorite.malId = Int64(animeId)
+        if(check){
+            favRepo.delete(entity: currentFavorite!)
+        }else{
+            let favorite = favRepo.create()
+            favorite.malId = Int64(animeId)
 
-        favRepo.saveContext()
+            favRepo.saveContext()
+        }
     }
     
     /*
